@@ -28,7 +28,7 @@ class AboutScreen extends StatelessWidget {
                 color: Colors.red,
                 height: 300,
                 child: PieChart(dataMap: listMap,
-                  animationDuration: Duration(milliseconds: 800),
+                  animationDuration: Duration(milliseconds: 600),
                   chartRadius: MediaQuery.of(context).size.width/3.2,
                   colorList: const [Colors.teal,Colors.lightGreenAccent,Colors.pinkAccent,Colors.amber],
                   initialAngleInDegree: 0,
