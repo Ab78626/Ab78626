@@ -44,12 +44,21 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     return Scaffold(
       appBar: AppBar(
         title: const Text('Habit Tracker'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.supervised_user_circle),
+            iconSize: 30.0,
+            onPressed: () {
+              // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 40,
               child: TextField(
                 controller: searchController,
@@ -88,6 +97,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 children: const [AboutScreen(), HomeScreen()],
               ),
             ),
+
           ],
         ),
       ),
