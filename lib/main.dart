@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/Model_View/CustomTabBar.dart';
 import 'Screens/about_screen.dart';
 import 'Screens/home_screen.dart';
 
@@ -23,7 +24,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+  final _firstExampleFeature = _FeaturesTab();
   late TabController tabController;
+  TabBarLocation _tabBarLocation = TabBarLocation.top;
+
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -34,7 +38,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   @override
   void dispose() {
-    tabController.dispose();
+
     searchController.dispose();
     super.dispose();
   }
@@ -43,10 +47,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Recipe Creator'),
+        title: const Text('Find Best Recipe \nFor Cooking'),
+        titleTextStyle: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
         actions: [
           IconButton(
-            icon: Icon(Icons.supervised_user_circle),
+            icon: Icon(Icons.notifications),
             iconSize: 30.0,
             onPressed: () {
               // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
@@ -55,52 +64,72 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(2),
         child: Column(
           children: [
-            SizedBox(
+            Container(
               height: 40,
+              padding: const EdgeInsets.symmetric(horizontal:10),
+
               child: TextField(
                 controller: searchController,
                 decoration: const InputDecoration(
                   hintText: 'Search....',
                   prefixIcon: Icon(
                     Icons.search,
+                    size: 30,
                     color: Colors.lightBlue,
+                  ),
+
+                  suffixIcon: Icon(
+                    Icons.candlestick_chart,
+                    size: 30,
+                    color: Colors.lightGreenAccent,
+
                   ),
                   hintStyle: TextStyle(color: Colors.black),
                   filled: true,
                   fillColor: Colors.white,
+
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.red),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 16),
-            TabBar(
-              controller: tabController,
-              tabs: const [
-                Tab(
-                  icon: Icon(Icons.home),
-                ),
-                Tab(
-                  icon: Icon(Icons.settings),
-                ),
+            const SizedBox(height: 10),
+            Column(
+              children: [
+                CustomTabBar(
+                  tabBarItems: _firstExampleFeature.tabBarItems,
+                  tabViewItems: _firstExampleFeature.tabViewItems,
+                  tabBarLocation: _tabBarLocation,
+                  padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  tabBarItemHeight: MediaQuery.of(context).size.height * 0.06,
+                  tabViewItemHeight: MediaQuery.of(context).size.height * 0.70,
+                )
               ],
-            ),
-            Expanded(
-              child: TabBarView(
-                controller: tabController,
-                children: const [AboutScreen(), HomeScreen()],
-              ),
-            ),
+            )
 
           ],
         ),
       ),
     );
   }
+
+}
+
+class _FeaturesTab {
+  final List<String> tabBarItems = [
+    "Home",
+    "About",
+  ];
+
+  final List<Widget> tabViewItems = [
+    const AboutScreen(),
+    const HomeScreen()
+  ];
 }
