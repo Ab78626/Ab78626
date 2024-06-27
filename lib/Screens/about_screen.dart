@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 import '../Model/RecipeModel.dart';
 
 class AboutScreen extends StatelessWidget {
-    const AboutScreen({super.key,});
+  const AboutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class AboutScreen extends StatelessWidget {
          children: [
            Column(
              children: [
-               myCard(RecipeModel("recipeimg", "escrovitch", 32.0)),
+               myCard( RecipeModel("recipeimg", "escrovitch", 32.0)),
                myCard(RecipeModel("bammyimg", "curry shrimp",20.0)),
                myCard(RecipeModel("currygoat","currygoat",90.0)),
                myCard(RecipeModel("currychicken","currychicken",90.0)),
@@ -46,39 +45,25 @@ SingleChildScrollView singleChildScrollView(){
       ),
     );
 }
-  Column myCard(RecipeModel recipemodel) {
+  Column myCard(final RecipeModel recipemodel) {
+
     return Column(
 
       children: [
         Card(
-          color: CupertinoColors.systemBackground,
-          elevation: 10,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: ListTile(
-            leading: const SizedBox(
-              width:140, // Set the desired width
-              height: 90, // Set the desired height
-              //child: CircleAvatar(
-                child: Icon(Icons.emoji_food_beverage,size: 60.0,),
-             // ),
-            ),
-            title: Text(
-              recipemodel.Recipetitle,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            subtitle: Text(
-              recipemodel.RecipeImage,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[700],
-              ),
-            ),
-            trailing: const Icon(Icons.cached_rounded),
+          elevation: 50,
+          shadowColor: Colors.black,
+          color: Colors.greenAccent[100],
+          child: SizedBox(
+            width: 600,
+            height: 200,
+            child: Padding(padding: const EdgeInsets.all(20.0),
+            child: Column(
+            children: [
+
+              CircleAvatar(backgroundColor: Colors.green,radius: 80,child: const CircleAvatar(backgroundImage: NetworkImage("re" ),radius: 100,),)],
+
+            ),),
           ),
         ),
         const Divider(
@@ -92,4 +77,5 @@ SingleChildScrollView singleChildScrollView(){
     );
  }
 }
+
 

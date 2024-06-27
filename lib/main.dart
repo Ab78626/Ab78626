@@ -11,6 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,6 +27,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   final _firstExampleFeature = _FeaturesTab();
+  final  RecipeModel recipemodel = RecipeModel("recipeimg", "title", 20.0);
   late TabController tabController;
   TabBarLocation _tabBarLocation = TabBarLocation.top;
 
@@ -82,12 +84,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     color: Colors.lightBlue,
                   ),
 
-                  suffixIcon: Icon(
-                    Icons.settings_input_component_outlined,
-                    size: 30,
-                    color: Colors.black45,
-
-                  ),
                   hintStyle: TextStyle(color: Colors.black),
                   filled: true,
                   fillColor: Colors.white,
@@ -130,6 +126,7 @@ class _FeaturesTab {
   ];
 
   final List<Widget> tabViewItems = [
+
     const AboutScreen(),
     const HomeScreen()
   ];
