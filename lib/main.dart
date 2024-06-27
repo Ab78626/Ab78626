@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/Model/RecipeModel.dart';
 import 'package:project1/Model_View/CustomTabBar.dart';
 import 'Screens/about_screen.dart';
 import 'Screens/home_screen.dart';
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Find Best Recipe \nFor Cooking'),
+        title: const Text('\nFind Best Recipe '),
         titleTextStyle: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
@@ -68,7 +69,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         child: Column(
           children: [
             Container(
-              height: 40,
+              height: 50,
               padding: const EdgeInsets.symmetric(horizontal:10),
 
               child: TextField(
@@ -82,9 +83,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   ),
 
                   suffixIcon: Icon(
-                    Icons.candlestick_chart,
+                    Icons.settings_input_component_outlined,
                     size: 30,
-                    color: Colors.lightGreenAccent,
+                    color: Colors.black45,
 
                   ),
                   hintStyle: TextStyle(color: Colors.black),
@@ -107,7 +108,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   tabViewItems: _firstExampleFeature.tabViewItems,
                   tabBarLocation: _tabBarLocation,
                   padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                   tabBarItemHeight: MediaQuery.of(context).size.height * 0.06,
                   tabViewItemHeight: MediaQuery.of(context).size.height * 0.70,
                 )
